@@ -1,6 +1,5 @@
-
 import javascript
+import semmle.javascript.frameworks.jQuery
+import DataFlow::SourceNode
 
-from CallExpr dollarCall 
-where dollarCall.getCalleeName() = "$"
-select dollarCall, dollarCall.getArgument(0)
+select jquery().getACall().getArgument(0)
