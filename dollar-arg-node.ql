@@ -2,4 +2,6 @@ import javascript
 import semmle.javascript.frameworks.jQuery
 import DataFlow::SourceNode
 
-select jquery().getACall().getArgument(0)
+from DataFlow::SourceNode srcNode
+where srcNode = jquery() and  srcNode.getAPropertyRead().getPropertyName() = "fn"
+select srcNode.getACall()
